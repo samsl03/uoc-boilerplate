@@ -48,14 +48,13 @@
     "rimraf": "^6.0.1",
     "sharp": "^0.33.5",
     "stylelint": "^16.26.1",
-    "lint:css": "stylelint \"src/**/*.scss\"",
-    "lint:css:fix": "stylelint \"src/**/*.scss\" --fix",
-    "lint:css:watch": "stylelint \"src/**/*.scss\" --watch",
+    "stylelint-config-sass-guidelines": "^12.1.0",
+    "stylelint-config-standard": "^39.0.1",
     "stylelint-config-standard-scss": "^16.0.0"
-    
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^7.0.1",
-    "bootstrap": "^5.3.8"
+    "@fortawesome/fontawesome-free": "^7.1.0",
+    "bootstrap": "^5.3.8",
+    "postcss-sass": "^0.5.0"
   }
 }
