@@ -57,3 +57,33 @@ body {
   font-size: 0.75rem;
   text-align: center;
 }
+
+
+//Header - Navbar.
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+
+  &__list {
+    display: flex;
+    margin:0;
+     &--item {
+      display: flex;
+      margin-right: 20px;
+    }
+    &--link {
+      text-decoration: none;
+    }
+  }
+  &__logo {
+    width: 15%;
+    
+  }
+}
+
+
+
+
+
