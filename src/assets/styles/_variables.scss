@@ -10,3 +10,16 @@ $uoc-masterbrand: #73edff;
 $uoc-bg: color.scale($uoc-masterbrand, $lightness: 70%);
 
 $mqMinWidth: 420px;
+
+
+$primary-color:#2a6f9e;
+$secunday-color:#6ecbd4;
+$details1-color:#d9c3a1;
+$details2-color:#c67a51;
+
+:root{
+--gap: 16px;              /* espacio entre celdas */
+--card-bg: #FFF8F0;      /* fondo ejemplo */
+--card-border: rgba(0,0,0,0.06);
+--text: #222;
+}

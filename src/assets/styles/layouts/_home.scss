@@ -1,54 +1,42 @@
 @use "../variables";
 
-* {
-  box-sizing: border-box;
-}
+@layer reset, base, components, utilities;
 
-body {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  margin: 0;
-  padding: 2rem;
-  font-family: variables.$font-family-sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  background-color: variables.$uoc-bg;
-  color: variables.$uoc-corporate;
-}
-
-.uoc-container {
-  max-width: 800px;
-  margin: auto;
-  padding: 2rem;
-  border-radius: 2rem;
-  text-align: center;
-  background-color: #fff;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
-
-.uoc-logo {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 1.5rem;
-  max-width: 200px;
-  height: auto;
-
-  @media (min-width: variables.$mqMinWidth) {
-    max-width: none;
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
   }
 }
 
-.uoc-title {
-  font-family: variables.$font-family-serif;
-  font-size: 24px;
-  font-weight: 700;
-  color: variables.$uoc-corporate;
+@layer base {
+  :root {
+    --gap: 16px;
+    --card-border: rgba(0, 0, 0, 0.06);
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    padding: 2rem;
+    font-family: variables.$font-family-sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    background-image: url(/src/assets/images/5104831.jpg);
+    color: variables.$uoc-corporate;
+  }
 
-  @media (min-width: variables.$mqMinWidth) {
-    font-size: 36px;
+  .uoc-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 2rem;
+    border-radius: 2rem;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
 }
 
@@ -56,34 +44,236 @@ body {
   margin-top: 1.5rem;
   font-size: 0.75rem;
   text-align: center;
+  background-color: variables.$uoc-corporate;
 }
 
-
-//Header - Navbar.
+//Header y Footer - Navbar.
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-content: center;
+  background-color: variables.$uoc-corporate;
+  border-radius: 10px;
+  padding: 20px;
 
   &__list {
     display: flex;
-    margin:0;
-     &--item {
-      display: flex;
-      margin-right: 20px;
-    }
-    &--link {
-      text-decoration: none;
+    margin: 0;
+    font-family: variables.$font-family-sans-serif;
+    list-style: none;
+    padding: 0;
+  }
+
+  &__item {
+    display: flex;
+    margin-right: 20px;
+
+    background-color: variables.$primary-color;
+    padding: 5px 20px;
+
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+
+    margin: 5px;
+
+    &:hover {
+      background-color: variables.$secunday-color;
+
+      .navbar__link {
+        color: variables.$details2-color;
+        font-weight: bold;
+      }
     }
   }
+
+  &__link {
+    text-decoration: none;
+    color: #fff;
+  }
+
   &__logo {
-    width: 15%;
-    
+    width: 10%;
   }
 }
 
+// Página 1 - Inicio
+.index-section1 {
+  width: 80%;
+  margin: 50px auto;
+  padding: 50px 0;
 
+  font-family: sans-serif;
+  text-align: center;
+  font-weight: lighter;
 
+ background-color: #fff;
+  border-radius: 10px;
 
+  &__title {
+    font-family: variables.$font-family-serif;
+    font-weight: bold;
+    font-size: 50px;
+    margin: 10px 0 20px;
+    color: variables.$uoc-corporate;
+  }
 
+  &__title2 {
+    font-family: variables.$font-family-serif;
+    margin: 40px 0;
+  }
+
+  &__text {
+    width: 70%;
+    margin: 0 auto 40px;
+  }
+
+  /* La retícula */
+  @supports (display: grid) {
+    &__wrapper-box {
+      display: grid;
+      gap: 5px;
+
+      grid-template-columns:
+        [col1-start] 300px
+        [col2-start] 300px
+        [col3-start] 400px
+        [col3-end];
+
+      grid-template-rows:
+        [row1-start] auto
+        [row2-start] auto
+        [row2-end];
+
+      justify-content: center;
+      align-content: center;
+
+      &__frame {
+        padding: 10px;
+        font-size: 150%;
+
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 15px;
+          transition: transform 0.3s ease;
+
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+
+      /* Modificadores de posición */
+      &__frameA {
+        grid-column: col1-start / col3-start;
+        grid-row: row1-start;
+      }
+
+      &__frameB {
+        grid-column: col3-start;
+        grid-row: row1-start / row2-end;
+      }
+
+      &__frameC {
+        grid-column: col1-start;
+        grid-row: row2-start;
+      }
+
+      &__frameD {
+        grid-column: col2-start;
+        grid-row: row2-start;
+      }
+    }
+  }
+}
+
+@layer components {
+  // Página 2 - Participantes.
+.participants-section {
+  width: 80%;
+  margin: 50px auto;
+  padding: 50px 0;
+  font-family: sans-serif;
+  text-align: center;
+  font-weight: lighter;
+  border-radius: 10px;
+
+  &__title {
+    font-family: variables.$font-family-serif;
+    background-color: #fff;
+    border-radius: 5px;
+    margin: 15px 0;
+    padding: 10px;
+    color: variables.$uoc-corporate;
+  }
+
+  &__subtitle {
+    font-family: variables.$font-family-serif !important;
+    font-weight: bold;
+    color: variables.$uoc-corporate;
+    font-size: 25px;
+    margin: 20px 0;
+  }
+
+  &__flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap);
+    align-items: stretch;
+    justify-content: center;
+  }
+
+  &__cell {
+    height: 450px;
+    flex: 1 1 calc((100% - (2 * var(--gap))) / 3);
+    min-width: 180px;
+    background: variables.$secunday-color;
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 14px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    p {
+      font-size: 20px;
+    }
+  }
+
+  &__img {
+    margin: 0 auto 10px;
+    width: 90%;
+    height: auto;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      display: block;
+      border-radius: 10px;
+    }
+  }
+
+  &__text {
+    font-size: 16px;
+    color: #333;
+  }
+
+  /* Media Queries */
+  @media (max-width: 900px) {
+    &__cell {
+      flex: 1 1 calc((100% - var(--gap)) / 2);
+    }
+  }
+
+  @media (max-width: 480px) {
+    &__cell {
+      flex: 1 1 100%;
+    }
+  }
+}
+
+}
