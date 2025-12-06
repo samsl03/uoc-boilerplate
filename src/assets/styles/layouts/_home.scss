@@ -3,7 +3,7 @@
 @layer reset, base, components, utilities;
 
 @layer bootstrap {
-  @import url('bootstrap/scss/bootstrap');
+  @import "bootstrap/scss/bootstrap";
 }
 
 @layer reset {
