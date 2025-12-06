@@ -1,9 +1,9 @@
-@use "../variables";
+@use '../variables';
 
 @layer reset, base, components, utilities;
 
 @layer bootstrap {
-  @import "bootstrap/scss/bootstrap";
+  @import url('bootstrap/scss/bootstrap');
 }
 
 @layer reset {
@@ -17,8 +17,9 @@
 @layer base {
   :root {
     --gap: 16px;
-    --card-border: rgba(0, 0, 0, 0.06);
+    --card-border: rgb(0 0 0 / 6%);
   }
+
   body {
     display: flex;
     flex-direction: column;
@@ -28,7 +29,7 @@
     font-family: variables.$font-family-sans-serif;
     font-size: 16px;
     line-height: 24px;
-    background-image: url(/src/assets/images/5104831.jpg);
+    background-image: url('/src/assets/images/5104831.jpg');
     color: variables.$uoc-corporate;
   }
 
@@ -39,17 +40,14 @@
     border-radius: 2rem;
     text-align: center;
     background-color: #fff;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-      0 2px 4px -1px rgba(0, 0, 0, 0.06);
-
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 10%),
+      0 2px 4px -1px rgb(0 0 0 / 6%);
     container-type: inline-size;
     container-name: mainbox;
 
     @container mainbox (min-width: 600px) {
-      .uoc-container {
-        padding: 3rem;
-        border-radius: 3rem;
-      }
+      padding: 3rem;
+      border-radius: 3rem;
     }
   }
 }
@@ -65,8 +63,7 @@
 
 .navbar {
   display: flex;
-  justify-content: space-between;
-  align-content: center;
+  place-content: center space-between;
   background-color: variables.$uoc-corporate;
   border-radius: 10px;
   padding: 20px;
@@ -84,14 +81,11 @@
   &__item {
     display: flex;
     justify-content: center;
-
     background-color: variables.$primary-color;
     padding: 5px 20px;
-
     border-radius: 10px;
     color: #fff;
     cursor: pointer;
-
     margin: 5px;
 
     &:hover {
@@ -115,14 +109,13 @@
 
   &__item:is(:hover, .is-active, :focus) {
     background-color: variables.$secunday-color;
+
     .navbar__link {
       color: variables.$details2-color;
       font-weight: bold;
     }
   }
 
-  @container navbar (max-width: 700px) {
-  }
 
   @container navbar (max-width: 450px) {
     &__list {
@@ -133,7 +126,7 @@
 
   /* Media Queries */
 
-  @media (max-width: 480px) {
+  @media (width <= 480px) {
     &__list {
       display: flex;
       flex-wrap: wrap;
@@ -141,29 +134,26 @@
     }
 
     
-     display: flex;
-     justify-content: center;
+    display: flex;
+    justify-content: center;
     
-     &__logo{
+    &__logo {
       width: 50%;
-     }
+    }
   }
 }
 
 // Página 1 - Inicio
 @layer components {
-  .index-section1 {
+  .sectionblock {
     width: 80%;
     margin: 50px auto;
     padding: 50px 0;
-
     font-family: sans-serif;
     text-align: center;
     font-weight: lighter;
-
     background-color: #fff;
     border-radius: 10px;
-
     container-type: inline-size;
     container-name: portada;
 
@@ -190,20 +180,16 @@
       &__wrapper-box {
         display: grid;
         gap: 5px;
-
         grid-template-columns:
           [col1-start] 300px
           [col2-start] 300px
           [col3-start] 400px
           [col3-end];
-
         grid-template-rows:
           [row1-start] auto
           [row2-start] auto
           [row2-end];
-
-        justify-content: center;
-        align-content: center;
+        place-content: center center;
 
         &__frame {
           padding: 10px;
@@ -242,16 +228,19 @@
           grid-row: row2-start;
         }
       }
+
       @container portada (min-width: 900px) {
         &__title {
           font-size: 60px;
         }
+
         &__text {
           width: 55%;
           font-size: 18px;
         }
       }
-      @media (max-width: 900px) {
+
+      @media (width <= 900px) {
         &__wrapper-box {
           grid-template-columns:
             [col1-start] 150px
@@ -261,14 +250,13 @@
         }
       }
 
-      @media (max-width: 480px) {
+      @media (width <= 480px) {
         &__wrapper-box {
           grid-template-columns:
             [col1-start] 100px
             [col2-start] 100px
             [col3-start] 90px
             [col3-end];
-
           gap: 0.1rem;
         }
       }
@@ -285,7 +273,6 @@
   text-align: center;
   font-weight: lighter;
   border-radius: 10px;
-
   container-type: inline-size;
   container-name: participantes;
 
@@ -328,7 +315,6 @@
     border: 1px solid var(--card-border);
     border-radius: 10px;
     padding: 14px;
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -370,7 +356,7 @@
   }
 
   /* Media Queries */
-  @media (max-width: 900px) {
+  @media (width <= 900px) {
     &__cell {
       flex: 1 1 calc((100% - var(--gap)) / 2);
     }
@@ -381,7 +367,7 @@
     }
   }
 
-  @media (max-width: 480px) {
+  @media (width <= 480px) {
     &__cell {
       flex: 1 1 100%;
     }
@@ -397,7 +383,6 @@
   background-color: #fff;
   border-radius: 10px;
   text-align: center;
-
   container-type: inline-size;
   container-name: articulo;
 
@@ -427,7 +412,6 @@
   &__titles {
     background-color: variables.$uoc-corporate;
     color: white;
-
     padding: 20px;
     border-radius: 15px;
   }
@@ -435,7 +419,6 @@
   &__p1 {
     width: 70%;
     font-size: 20px;
-
     padding-top: 50px;
     padding-left: 40px;
   }
@@ -451,44 +434,43 @@
       break-inside: avoid;
     }
   }
-  @media (max-width: 900px) {
+
+  @media (width <= 900px) {
     article {
       column-count: 1;
       column-gap: 2rem;
     }
   }
 
-  @media (max-width: 480px) {
-  }
 }
+
 .article-page__section {
   background-color: variables.$secunday-color;
   width: 80%;
   margin-top: 5rem;
   margin-left: auto;
   margin-right: auto;
-
   border-radius: 15px;
 
   p {
     padding: 30px;
   }
+
   h3 {
     font-family: variables.$font-family-sans-serif;
     font-weight: bold;
   }
 }
+
 blockquote {
   text-align: left;
   padding: 30px;
   font-size: 20px;
 
-  @media (max-width: 900px) {
+  @media (width <= 900px) {
     font-size: 14px;
   }
 
-  @media (max-width: 480px) {
-  }
 }
 
 .section-image {
@@ -499,12 +481,10 @@ blockquote {
   overflow: hidden;
 
   /* Media Queries */
-  @media (max-width: 900px) {
+  @media (width <= 900px) {
     width: 80%;
   }
 
-  @media (max-width: 480px) {
-  }
 }
 //Página 4 - Contactos.
 
@@ -512,7 +492,6 @@ blockquote {
   background-color: variables.$details1-color;
   margin-top: 2rem;
   margin-bottom: 2rem;
-
   padding: 3rem;
   border-radius: 15px;
 }
